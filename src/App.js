@@ -15,6 +15,14 @@ function App() {
   var [logs, updateLog] = React.useState([]);
   var [description, setDescription] = React.useState("");
 
+  // var descriptionInput = document.getElementById("descriptionInput");
+  // descriptionInput.addEventListener("keyup", (event) => {
+  //   if (event.key === 13) {
+  //     event.preventDefault();
+  //     document.getElementById("pushBtn").click();
+  //   }
+  // })
+
   //var [isNoblesse, togglenNoblesse] = React.useState(0);
 
   //Final Calc Refresh
@@ -43,6 +51,13 @@ function App() {
   }
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value)
+  }
+  const handleDescriptionInputKeyPress = (event) => {
+    var code = event.keyCode || event.which;
+    if (code === 13) {
+      event.preventDefault();
+      pushLog();
+    }
   }
 
   const pushLog = () => {
@@ -112,18 +127,14 @@ function App() {
             </div>
             <form>
               <div className="form-group text-center">
-                <input className="form-control" placeholder="Log description/alias" value={description} onChange={handleDescriptionChange}></input>
+                <input id="descriptionInput" className="form-control" placeholder="Log description/alias" value={description} onChange={handleDescriptionChange} onKeyPress={handleDescriptionInputKeyPress}></input>
                 <small className="text-dark">Save current values with description/alias attached to the log.</small>
               </div>
               <div className="form-group d-flex justify-content-center">
-                <button type="button" className="btn btn-dark d-block mx-2" onClick={pushLog}>Add to logs</button>
+                <button id="pushBtn" type="button" className="btn btn-dark d-block mx-2" onClick={pushLog}>Add to logs</button>
                 <button id="clearBtn" type="button" className="btn btn-dark d-block mx-2" onClick={clearLog}>Clear log</button>
               </div>
-
             </form>
-            {/* <Button variant="dark" onClick={pushLog}>Add to logs</Button> */}
-            {/* <Button variant="dark" onClick={clearLog}>Clear logs</Button> */}
-            {/* <Button variant="danger" onClick={debug}>Debug</Button> */}
           </div>
         </div>
         <div className="pb-3 d-flex justify-content-center align-items-center flex-column">
