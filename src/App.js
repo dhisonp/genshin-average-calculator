@@ -20,7 +20,7 @@ function App() {
   //Final Calc Refresh
   const finalCalc = () => {
     // const final = attack * (critRate / 100);
-    const final = formula(attack, critRate, critDmg, eleBonusDmg, modifier);
+    const final = formula(attack, critRate, critDmg, eleBonusDmg, modifier).toFixed(1);
     setFinal(final);
   }
   //Event listener
@@ -131,9 +131,9 @@ function App() {
           <div className="p-2 border overflow-auto" style={{ height: "25vh", backgroundColor: "#efefef", width: "80vw" }}>
             <pre>{renderLogLines()}</pre>
           </div>
-          <small className="text-dark align-self-start">Log is still ugly I know. Will work on tidier log.</small>
         </div>
       </div>
+      <small className="pb-2">Features to be added: Tidier logs, elemental mastery and reactions, Noblesse/Gambler, Mobile Polish</small>
     </div >
   );
 }
