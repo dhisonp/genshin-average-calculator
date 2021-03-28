@@ -1,5 +1,5 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.css'
 import React from 'react';
 import formula from './tools/formula';
 import { Button } from 'react-bootstrap';
@@ -69,11 +69,11 @@ function App() {
   }
 
   const pushLog = () => {
-    var reactionString = "No reaction"
+    var reactionString = "none"
     if (reaction === 1) {
-      reactionString = "Full Vaporize/Melt"
+      reactionString = "full"
     } else if (reaction === 2) {
-      reactionString = "Reverse Vaporize/Melt"
+      reactionString = "reverse"
     }
     const entry = {
       final: final,
@@ -100,95 +100,105 @@ function App() {
   }
 
   return (
-    <div className="justify-content-center align-items-center min-vh-100 bg-light d-flex flex-column">
-      <div className="py-4 min-vw-100 text-center text-light bg-dark">
-        <h1 className="display-4">Genshin Impact: Simple Average Calculator</h1>
-      </div>
-      <div className="d-flex flex-column">
-        <div className="p-2 d-flex justify-content-center">
-          {/* Input */}
-          <form className="p-4">
-            <div className="form-group">
-              <label for="attackInput" className="font-weight-bold">Attack</label>
-              <input className="form-control" id="attackInput" placeholder="Input total Attack" value={attack} onChange={handleAttackChange} />
-              <small className="form-text text-muted" id="attackInput">Your total attack, which is displayed as Base Atk + Atk Bonus at the details screen.</small>
-            </div>
-            <div className="form-group">
-              <label for="emInput" className="font-weight-bold">EM</label>
-              <input className="form-control" id="emInput" placeholder="Input elemental mastery" value={eleMastery} onChange={handleEleMasteryChange} />
-              <small className="form-text text-muted" id="emInput">Elemental mastery</small>
-              <div class="form-check">
-                <input onChange={handleNoReaction} checked={reaction === 0} class="form-check-input" type="radio" name="reactionRadio" id="noReaction" />
-                <label class="form-check-label" for="noReaction">
-                  No reaction
-                </label>
+    <div className="bg-light">
+      <nav class="navbar navbar-light bg-dark">
+        <span class="navbar-brand mb-0 text-light">Genshin Simple Average</span>
+      </nav>
+      <div className="container">
+        <div className="row justify-content-md-center">
+          <div className="col">
+            <form className="p-4 col">
+              <div className="form-group">
+                <label for="attackInput" className="font-weight-bold">Attack</label>
+                <input className="form-control" id="attackInput" placeholder="Input total Attack" value={attack} onChange={handleAttackChange} />
+                <small className="form-text text-muted" id="attackInput">Your total attack, which is displayed as Base Atk + Atk Bonus at the details screen.</small>
               </div>
-              <div className="d-flex">
-                <div class="form-check mr-2">
-                  <input onChange={handleReactionFull} checked={reaction === 1} class="form-check-input" type="radio" name="reactionRadio" id="reactionFull" />
-                  <label class="form-check-label" for="reactionFull">
-                    Vaporize/Melt (2x)
-                </label>
-                </div>
+              <div className="form-group">
+                <label for="emInput" className="font-weight-bold">EM</label>
+                <input className="form-control" id="emInput" placeholder="Input elemental mastery" value={eleMastery} onChange={handleEleMasteryChange} />
+                <small className="form-text text-muted" id="emInput">Elemental mastery</small>
                 <div class="form-check">
-                  <input onChange={handleReactionReverse} checked={reaction === 2} class="form-check-input" type="radio" name="reactionRadio" id="reactionReverse" />
-                  <label class="form-check-label" for="reactionReverse">
-                    Reverse Vaporize/Melt (1.5x)
+                  <input onChange={handleNoReaction} checked={reaction === 0} class="form-check-input" type="radio" name="reactionRadio" id="noReaction" />
+                  <label class="form-check-label" for="noReaction">
+                    No reaction
                 </label>
                 </div>
+                <div className="d-flex">
+                  <div class="form-check mr-2">
+                    <input onChange={handleReactionFull} checked={reaction === 1} class="form-check-input" type="radio" name="reactionRadio" id="reactionFull" />
+                    <label class="form-check-label" for="reactionFull">
+                      Vaporize/Melt (2x)
+                </label>
+                  </div>
+                  <div class="form-check">
+                    <input onChange={handleReactionReverse} checked={reaction === 2} class="form-check-input" type="radio" name="reactionRadio" id="reactionReverse" />
+                    <label class="form-check-label" for="reactionReverse">
+                      Reverse Vaporize/Melt (1.5x)
+                </label>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="form-group">
-              <label for="critInput" className="font-weight-bold">Crit%</label>
-              <input className="form-control" id="critInput" placeholder="Input crit rate" value={critRate} onChange={handleCritRateChange} />
-              <small className="form-text text-muted" id="critInput">Critical rate percentage.</small>
-            </div>
-            <div className="form-group">
-              <label for="critDmgInput" className="font-weight-bold">CritDmg%</label>
-              <input className="form-control" id="critDmgInput" placeholder="Input crit damage" value={critDmg} onChange={handleCritDamageChange} />
-              <small className="form-text text-muted" id="critDmgInput">Critical damage percentage.</small>
-            </div>
-            <div className="form-group">
-              <label for="eleInput" className="font-weight-bold">Ele%</label>
-              <input className="form-control" id="eleInput" placeholder="Input elemental bonus damage" value={eleBonusDmg} onChange={handleElementalBonusDamageChange} />
-              <small className="form-text text-muted" id="eleInput">Elemental damage bonus (Electro, Pyro, etc.).</small>
-            </div>
-            <div className="form-group">
-              <label for="modifierInput" className="font-weight-bold">Skill Modifier (WiP)</label>
-              <input disabled className="form-control" id="modifierInput" placeholder="Input skill modifier" value={modifier} onChange={handleModifierChange} />
-              <small className="form-text text-muted" id="eleInput">Your skill modifier.</small>
-            </div>
-
-          </form>
-          <div className="px-4 py-2 d-flex justify-content-center flex-column w-50">
-            <div className="mb-5 text-center">
-              <h5 className="">Average final damage:</h5>
-              <h3 className="text-dark display-3">{final}</h3>
-              {/* <h3 className="text-dark display-3">{reaction}</h3> */}
-            </div>
-            <form>
-              <div className="form-group text-center">
-                <input id="descriptionInput" className="form-control" placeholder="Log description/alias" value={description} onChange={handleDescriptionChange} onKeyPress={handleDescriptionInputKeyPress}></input>
-                <small className="text-dark">Save current values with description/alias attached to the log.</small>
+              <div className="form-group">
+                <label for="critInput" className="font-weight-bold">Crit%</label>
+                <input className="form-control" id="critInput" placeholder="Input crit rate" value={critRate} onChange={handleCritRateChange} />
+                <small className="form-text text-muted" id="critInput">Critical rate percentage.</small>
               </div>
-              <div className="form-group d-flex justify-content-center">
-                <button id="pushBtn" type="button" className="btn btn-dark d-block mx-2" onClick={pushLog}>Add to logs</button>
-                <button id="clearBtn" type="button" className="btn btn-dark d-block mx-2" onClick={clearLog}>Clear log</button>
-                <button id="debug" type="button" className="btn btn-danger d-block mx-2" onClick={debug}>Debug</button>
+              <div className="form-group">
+                <label for="critDmgInput" className="font-weight-bold">CritDmg%</label>
+                <input className="form-control" id="critDmgInput" placeholder="Input crit damage" value={critDmg} onChange={handleCritDamageChange} />
+                <small className="form-text text-muted" id="critDmgInput">Critical damage percentage.</small>
+              </div>
+              <div className="form-group">
+                <label for="eleInput" className="font-weight-bold">Ele%</label>
+                <input className="form-control" id="eleInput" placeholder="Input elemental bonus damage" value={eleBonusDmg} onChange={handleElementalBonusDamageChange} />
+                <small className="form-text text-muted" id="eleInput">Elemental damage bonus (Electro, Pyro, etc.).</small>
+              </div>
+              <div className="form-group">
+                <label for="modifierInput" className="font-weight-bold">Skill Modifier (WiP)</label>
+                <input disabled className="form-control" id="modifierInput" placeholder="Input skill modifier" value={modifier} onChange={handleModifierChange} />
+                <small className="form-text text-muted" id="eleInput">Your skill modifier.</small>
               </div>
             </form>
           </div>
+          <div className="col">
+            <div className="px-4 py-2 d-flex flex-column justify-content-center h-100">
+              <div className="mb-5 text-center">
+                <h5 className="">Average final damage:</h5>
+                <h3 className="text-dark display-3">{final}</h3>
+                {/* <h3 className="text-dark display-3">{reaction}</h3> */}
+              </div>
+              <form>
+                <div className="form-group text-center">
+                  <input id="descriptionInput" className="form-control" placeholder="Log description/alias" value={description} onChange={handleDescriptionChange} onKeyPress={handleDescriptionInputKeyPress}></input>
+                  <small className="text-muted">Save current values with description/alias attached to the log.</small>
+                </div>
+                <div className="form-group d-flex justify-content-center">
+                  <button id="pushBtn" type="button" className="btn btn-dark d-block mx-2" onClick={pushLog}>Add to logs</button>
+                  <button id="clearBtn" type="button" className="btn btn-dark d-block mx-2" onClick={clearLog}>Clear log</button>
+                  {/* <button id="debug" type="button" className="btn btn-danger d-block mx-2" onClick={debug}>Debug</button> */}
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-        <div className="pb-3 d-flex justify-content-center align-items-center flex-column">
-          <h5 className="d-flex align-self-start">Logs:</h5>
-          <div className="p-2 border overflow-auto" style={{ height: "25vh", backgroundColor: "#efefef", width: "80vw" }}>
+        <div className="row p-2">
+          <h5 className="">Logs:</h5>
+          <div id="logBox" className="p-2 border overflow-auto w-100" style={{ height: "24vh", backgroundColor: "#efefef" }}>
             <pre>{renderLogLines()}</pre>
           </div>
         </div>
+      </div >
+      <div className="p-2 fluid-container">
+        <div className="row">
+          <div className="col-sm-6">
+            <small className="">[v0.1.3] To be added: cleaner logs, enemy resistance, additive reactions </small>
+          </div>
+          <div className="col-sm-6 text-md-right">
+            <small className="">@dhisvn at ig, @dhisonp at github</small>
+          </div>
+        </div>
       </div>
-      <small className="pb-2">Features to be added: Tidier logs, elemental mastery and reactions, Noblesse/Gambler, Mobile Polish</small>
-      <small>Last push: This section.</small>
-    </div >
+    </div>
   );
 }
 

@@ -1,5 +1,4 @@
-1. Mobile responsiveness
-2. Cleaner logs
-3. Accurate advanced formula
-4. Elemental mastery and reactions
-5. Noblesse and gambler
+- Mobile responsive (Still in testing, but mostly done)
+- Logs cleanup
+- Enemy resistance
+- Data type validation
