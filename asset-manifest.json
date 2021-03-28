@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/genshin-average-calculator/static/css/main.9d5b29c0.chunk.css",
-    "main.js": "/genshin-average-calculator/static/js/main.b2b5d0e4.chunk.js",
-    "main.js.map": "/genshin-average-calculator/static/js/main.b2b5d0e4.chunk.js.map",
+    "main.js": "/genshin-average-calculator/static/js/main.e8d2969a.chunk.js",
+    "main.js.map": "/genshin-average-calculator/static/js/main.e8d2969a.chunk.js.map",
     "runtime-main.js": "/genshin-average-calculator/static/js/runtime-main.4b4f5b50.js",
     "runtime-main.js.map": "/genshin-average-calculator/static/js/runtime-main.4b4f5b50.js.map",
-    "static/css/2.4c97ca4f.chunk.css": "/genshin-average-calculator/static/css/2.4c97ca4f.chunk.css",
+    "static/css/2.ef9168ec.chunk.css": "/genshin-average-calculator/static/css/2.ef9168ec.chunk.css",
     "static/js/2.5ab7844a.chunk.js": "/genshin-average-calculator/static/js/2.5ab7844a.chunk.js",
     "static/js/2.5ab7844a.chunk.js.map": "/genshin-average-calculator/static/js/2.5ab7844a.chunk.js.map",
     "static/js/3.2eb9b383.chunk.js": "/genshin-average-calculator/static/js/3.2eb9b383.chunk.js",
     "static/js/3.2eb9b383.chunk.js.map": "/genshin-average-calculator/static/js/3.2eb9b383.chunk.js.map",
     "index.html": "/genshin-average-calculator/index.html",
-    "static/css/2.4c97ca4f.chunk.css.map": "/genshin-average-calculator/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/2.ef9168ec.chunk.css.map": "/genshin-average-calculator/static/css/2.ef9168ec.chunk.css.map",
     "static/css/main.9d5b29c0.chunk.css.map": "/genshin-average-calculator/static/css/main.9d5b29c0.chunk.css.map",
     "static/js/2.5ab7844a.chunk.js.LICENSE.txt": "/genshin-average-calculator/static/js/2.5ab7844a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.4b4f5b50.js",
-    "static/css/2.4c97ca4f.chunk.css",
+    "static/css/2.ef9168ec.chunk.css",
     "static/js/2.5ab7844a.chunk.js",
     "static/css/main.9d5b29c0.chunk.css",
-    "static/js/main.b2b5d0e4.chunk.js"
+    "static/js/main.e8d2969a.chunk.js"
   ]
 }
